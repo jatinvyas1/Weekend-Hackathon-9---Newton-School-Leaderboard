@@ -12,11 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 // your code goes here
-// app.get("/topRankings", (req, res) => {
-//   const limit = Number(req.body.limit);
-//   const offset = Number(req.body.offset);
-//   res.send(data.slice(offset, limit + offset));
-// });
+
+app.get("/topRankings", (req, res) => {
+  res.send(data.slice(0, 20));
+});
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
