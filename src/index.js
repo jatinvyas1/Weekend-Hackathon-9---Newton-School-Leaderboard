@@ -16,11 +16,11 @@ app.use(bodyParser.json());
 app.get("/topRankings", (req, res) => {
   let limit = 20;
   let offset = 0;
-  if (req.query.limit) {
+  if (!isNaN(req.query.limit / 1)) {
     limit = Number(req.query.limit);
     console.log(limit);
   }
-  if (req.query.offset) {
+  if (!isNaN(req.query.offset / 1)) {
     offset = Number(req.query.offset);
     console.log(offset);
   }
