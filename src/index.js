@@ -14,15 +14,17 @@ app.use(bodyParser.json());
 // your code goes here
 
 app.get("/topRankings", (req, res) => {
-  const limit = 20;
-  const offset = 0;
-  if (!isNaN(req.body.limit / 1)) {
-    limit = Number(req.body.limit);
+  let limit = 20;
+  let offset = 0;
+  if (!isNaN(req.query.limit / 1)) {
+    limit = Number(req.query.limit);
+    console.log(limit);
   }
-  if (!isNaN(req.body.offset)) {
-    offset = Number(req.body.offset);
+  if (req.query.offset) {
+    offset = Number(req.query.offset);
+    console.log(offset);
   }
-  res.send(data.slice(limit, offset + limit));
+  res.send(data.slice(offset, offset + limit));
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
