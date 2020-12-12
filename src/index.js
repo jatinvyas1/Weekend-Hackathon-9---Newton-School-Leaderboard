@@ -22,7 +22,7 @@ app.get("/topRankings", (req, res) => {
   if (req.params.offset) {
     offset = Number(req.params.limit);
   }
-  res.send(limit, offset);
+  res.send(data.slice(limit, offset + limit));
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
