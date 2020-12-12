@@ -14,7 +14,15 @@ app.use(bodyParser.json());
 // your code goes here
 
 app.get("/topRankings", (req, res) => {
-  res.send(data.slice(0, 20));
+  const limit = 20;
+  const offset = 0;
+  if (req.params.limit) {
+    limit = Number(req.params.limit);
+  }
+  if (req.params.offset) {
+    offset = Number(req.params.limit);
+  }
+  res.send(limit, offset);
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
